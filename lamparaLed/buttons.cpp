@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "buttons.h"
 
+#define TWO_SECONDS 100 // 
+#define FIVE_SECONDS  250
 
 int BUTTON_R = 4;
 int BUTTON_G = 3;
@@ -10,9 +12,11 @@ bool pulseR = false;
 bool pulseG = false;
 bool pulseB = false;
 
-bool pulseR_long = false;
-bool pulseG_long = false;
-bool pulseB_long = false;
+
+
+int pulseR_count = 0;
+int pulseG_count = 0;
+int pulseB_count = 0;
 
 
 int statusButtonR = 0;
@@ -40,36 +44,89 @@ void configure_buttons(){
 int button_loop()
 {
   int finalButton = 0;
+
+  /* R button */
   statusButtonR = digitalRead(BUTTON_R);
-  if (statusButtonR != statusButtonR_prev && statusButtonR==0){
+  if (statusButtonR==0){
     delay(20);
-    if (statusButtonR==0){
-      finalButton = PULSED_SINGLE_R;
-      goto final_return;
+    statusButtonR_prev= digitalRead(BUTTON_R);
+    if (statusButtonR_prev == statusButtonR){
+      pulseR=true;
+      pulseR_count++;
+      if (pulseR_count==TWO_SECONDS){
+        finalButton = PULSED_LONG_R;
+      }
+      
+      if (pulseR_count>FIVE_SECONDS){
+        pulseR_count = FIVE_SECONDS+100;
+      }
     }
+  }else{
+    if (pulseR==true){
+      if (pulseR_count<= TWO_SECONDS){
+        finalButton = PULSED_SINGLE_R;       
+      }    
+    }
+    pulseR=false;
+    pulseR_count=0;
   }
+
+  /* G button */
+
   statusButtonG = digitalRead(BUTTON_G);
-  if (statusButtonG != statusButtonG_prev && statusButtonG==0){
+  if (statusButtonG==0){
     delay(20);
-    if (statusButtonG==0){
-      finalButton = PULSED_SINGLE_G;
-      goto final_return;
+    statusButtonG_prev= digitalRead(BUTTON_G);
+    if (statusButtonG_prev == statusButtonG){
+      pulseG=true;
+      pulseG_count++;
+      if (pulseG_count==TWO_SECONDS){
+        finalButton = PULSED_LONG_G;
+      }
+      if (pulseG_count==FIVE_SECONDS){
+        finalButton = PULSED_MAGIC;
+      }
+      if (pulseG_count>FIVE_SECONDS){
+        pulseG_count =FIVE_SECONDS+100;
+      }
     }
+  }else{
+    if (pulseG==true){
+      if (pulseG_count<= TWO_SECONDS){
+        finalButton = PULSED_SINGLE_G;       
+      }    
+    }
+    pulseG=false;
+    pulseG_count=0;
   }
+
+  /* B button */
   statusButtonB = digitalRead(BUTTON_B);
-  if (statusButtonB != statusButtonB_prev && statusButtonB==0){
+  if (statusButtonB==0){
     delay(20);
-    if (statusButtonB==0){
-      finalButton = PULSED_SINGLE_B;
-      goto final_return;
+    statusButtonB_prev= digitalRead(BUTTON_B);
+    if (statusButtonB_prev == statusButtonB){
+      pulseB=true;
+      pulseB_count++;
+      if (pulseB_count==TWO_SECONDS){
+        finalButton = PULSED_LONG_B;
+      }
+      if (pulseB_count>TWO_SECONDS){
+        pulseB_count =TWO_SECONDS+100;
+      }
     }
+  }else{
+    if (pulseB==true){
+      if (pulseB_count<= TWO_SECONDS){
+        finalButton = PULSED_SINGLE_B;       
+      }    
+    }
+    pulseB=false;
+    pulseB_count=0;
   }
-  
-final_return:
-  statusButtonR_prev = statusButtonR;
-  statusButtonG_prev = statusButtonG;
-  statusButtonB_prev = statusButtonB;
-  
+
+
+
   return finalButton;
 }
 
