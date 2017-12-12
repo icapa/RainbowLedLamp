@@ -6,7 +6,7 @@
 #define BAUDRATE 9600
 
 #define NUM_LED 60
-#define MAX_POWER 100
+#define MAX_POWER 250
 
 WS2812 LED(NUM_LED);
 cRGB value;
@@ -55,20 +55,63 @@ void loop() {
   buttonPulse = button_loop();
   
   if (buttonPulse == PULSED_SINGLE_R){
-    r = r + 10;
-    if (r>MAX_POWER) r = 0;
+    if (r>MAX_POWER){
+      r = 0;
+    }
+    else if (r==MAX_POWER-10){
+      todos(255,0,0);
+      delay(1000);
+      todos(0,0,0);
+      delay(1000);
+      Serial.println("Red max");
+      r= 255;
+    }
+    else{
+      r = r + 10;
+    }
     updateLeds=true;
   }
+
+  
   if (buttonPulse == PULSED_SINGLE_G){
-    g = g + 10;
-    if (g>MAX_POWER) g = 0;
+    if (g>MAX_POWER){
+      g = 0;
+    }
+    else if (g==MAX_POWER-10){
+      todos(0,255,0);
+      delay(1000);
+      todos(0,0,0);
+      delay(1000);
+      Serial.println("Green max");
+      g = 255;
+    }
+    else{
+      g = g + 10;
+    }
     updateLeds=true;
   }
+  
   if (buttonPulse == PULSED_SINGLE_B){
-    b = b + 10;
-    if (b>MAX_POWER) b = 0;
+    if (b>MAX_POWER){
+      b = 0;
+    }
+    else if (b==MAX_POWER-10){
+      Serial.println("Blue max");
+      todos(0,0,255);
+      delay(1000);
+      todos(0,0,0);
+      delay(1000);
+      
+      b = 255;
+    }
+    else{
+      b = b + 10;
+    }
     updateLeds=true;
+    
   }
+
+  
   if (buttonPulse == PULSED_LONG_R){
     if (r!=0 || g!=0 || b!=0){
       r=0;
@@ -112,10 +155,13 @@ void loop() {
   if (updateLeds==true){
     updateLeds=false;
     todos(r,g,b);
+    /*
     Serial.println("RGB:");
     Serial.println(r,DEC);
     Serial.println(g,DEC);
     Serial.println(b,DEC);
+    */
+    
   }
 
 
