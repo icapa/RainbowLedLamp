@@ -15,19 +15,18 @@ This is a RGB (Red Green Blue) lamp based on Arduino and led strip lights. There
 
 ## Pictures
 
-![Lamp](img/1.jpg =100x100)
-![Lamp](img/2.jpg =100x100)
+<img src="img/1.jpg" style = "width: 200px; height: 200px" />
 
 
-![Lamp](img/3.jpg) 
-![Lamp](img/4.jpg)
+12[Lamp](img/3.jpg) 
+12[Lamp](img/4.jpg)
 
-![Lamp](img/5.jpg)
-![Lamp](img/6.jpg)
+12[Lamp](img/5.jpg)
+12[Lamp](img/6.jpg)
 
 
-![Lamp](img/7.jpg)
-![Lamp](img/8.jpg)
+12[Lamp](img/7.jpg)
+12[Lamp](img/8.jpg)
 
 
 Thanks to Henri-K for his WS2812 library
