@@ -15,11 +15,11 @@ This is a RGB (Red Green Blue) lamp based on Arduino and led strip lights. There
 
 ## Pictures
 
-![Lamp](img/1.jpg)
-![Lamp](img/2.jpg)
+![Lamp](img/1.jpg =100x100)
+![Lamp](img/2.jpg =100x100)
 
 
-![Lamp](img/3.jpg)
+![Lamp](img/3.jpg) 
 ![Lamp](img/4.jpg)
 
 ![Lamp](img/5.jpg)
