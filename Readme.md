@@ -15,19 +15,25 @@ This is a RGB (Red Green Blue) lamp based on Arduino and led strip lights. There
 
 ## Pictures
 
-<img src="img/1.jpg" style = "max-width:40%;" />
+<img src="img/1.jpg" width="300">
+<img src="img/2.jpg" width="300">
+
+<img src="img/3.jpg" width="300">
+<img src="img/4.jpg" width="300">
+
+<img src="img/5.jpg" width="300">
+<img src="img/6.jpg" width="300">
+
+<img src="img/7.jpg" width="300">
+<img src="img/8.jpg" width="300">
 
 
-12[Lamp](img/3.jpg) 
-12[Lamp](img/4.jpg)
-
-12[Lamp](img/5.jpg)
-12[Lamp](img/6.jpg)
 
 
-12[Lamp](img/7.jpg)
-12[Lamp](img/8.jpg)
 
 
-Thanks to Henri-K for his WS2812 library
-https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino
+
+
+##Thanks to Henri-K for his WS2812 library:
+
+###[https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino](https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino)
