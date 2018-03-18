@@ -34,6 +34,6 @@ This is a RGB (Red Green Blue) lamp based on Arduino and led strip lights. There
 
 
 
-##Thanks to Henri-K for his WS2812 library:
+## Thanks to Henri-K for his WS2812 library:
 
-###[https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino](https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino)
+### [https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino](https://github.com/cpldcpu/light_ws2812/tree/master/light_ws2812_Arduino)
